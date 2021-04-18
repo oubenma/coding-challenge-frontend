@@ -1,25 +1,34 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
+import { ContextProvider } from './contexts/dataContext';
+import CategoryPage from './pages/CategoryPage';
+import ProductPage from './pages/ProductPage';
+import { CATEGORIES_PAGE_URL, INDEX, PRODUCTS_PAGE_URL } from './utils/constants';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <ContextProvider>
+
+
+        <Switch>
+          <Route path={PRODUCTS_PAGE_URL}>
+            <ProductPage />
+          </Route>
+
+          <Route path={CATEGORIES_PAGE_URL}>
+            <CategoryPage />
+          </Route>
+
+          <Route path={INDEX}>
+            <CategoryPage />
+          </Route>
+
+
+        </Switch>
+      </ContextProvider>
+
+    </Router>
   );
 }
 
