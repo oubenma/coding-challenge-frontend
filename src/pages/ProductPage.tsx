@@ -132,6 +132,7 @@ function ProductPage() {
             onClick: event => {
               setProduct({ title: '', originalCurrency: '', originalPrice: 0 });
               setDialogAction('add');
+              setSelectedCategory(undefined);
               handleClickOpen();
             }
           },
